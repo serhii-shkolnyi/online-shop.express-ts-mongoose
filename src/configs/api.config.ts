@@ -13,4 +13,7 @@ export const apiConfig = {
 
   EXPIRES_IN_ACCESS: process.env.EXPIRES_IN_ACCESS,
   EXPIRES_IN_REFRESH: process.env.EXPIRES_IN_REFRESH,
+
+  NO_REPLY_EMAIL: process.env.NO_REPLY_EMAIL,
+  NO_REPLY_EMAIL_PASSWORD: process.env.NO_REPLY_EMAIL_PASSWORD,
 };

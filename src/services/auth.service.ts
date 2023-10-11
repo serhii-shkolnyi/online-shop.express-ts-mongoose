@@ -1,6 +1,8 @@
+import { EEmailAction } from "../enums";
 import { ApiError } from "../errors";
 import { ITokensPair, IUser, IUserCredentials } from "../interfaces";
 import { tokenRepository, userRepository } from "../repositories";
+import { emailService } from "./email.service";
 import { passwordService } from "./password.service";
 import { tokenService } from "./token.service";
 
@@ -9,9 +11,9 @@ class AuthService {
     try {
       const hashedPassword = await passwordService.hash(dto.password);
       await userRepository.createUser({ ...dto, password: hashedPassword });
-      // await emailService.sendMail(dto.email, EEmailAction.REGISTER, {
-      //   name: "Kokos",
-      // });
+      await emailService.sendMail(dto.email, EEmailAction.REGISTER, {
+        email: dto.email,
+      });
     } catch (e) {
       throw new ApiError(e.message, e.status);
     }
