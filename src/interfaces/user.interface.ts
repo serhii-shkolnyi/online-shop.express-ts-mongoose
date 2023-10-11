@@ -1,3 +1,5 @@
+import { Document } from "mongoose";
+
 import { EUserRole, EUserStatus } from "../enums";
 
 export interface IUser extends Document {
@@ -6,3 +8,5 @@ export interface IUser extends Document {
   status: EUserStatus;
   password: string;
 }
+
+export type IUserCredentials = Pick<IUser, "email" | "password">;
